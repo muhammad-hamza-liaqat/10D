@@ -8,6 +8,7 @@ const addData = async (req, res) => {
       // Store the path of each uploaded file
       filePaths.push(file.path);
     });
+    console.log("files uploaded successfully to the server!");
     res
       .status(200)
       .json({ message: "Files uploaded successfully.", files: filePaths });
