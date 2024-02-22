@@ -11,7 +11,7 @@ const s3 = new S3Client({
     region: process.env.region
 
 })
-console.log(process.env)
+// console.log(process.env)
 
 const s3Storage = multerS3({
     s3: s3, 
