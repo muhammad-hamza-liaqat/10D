@@ -17,8 +17,10 @@ require("./database/connection");
 // routes
 const imagesRoutes = require("./routes/images");
 const parentReferenceRoute = require("./routes/parentReferenceRoutes");
+const materialPathRoutes = require("./routes/materialPathRoutes");
 app.use("/api", imagesRoutes);
 app.use("/api/pr", parentReferenceRoute);
+app.use("/api/mp", materialPathRoutes);
 
 // server
 app.listen(process.env.PORT , ()=>{

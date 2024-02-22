@@ -35,7 +35,7 @@ const subTree = async (req, res) => {
         },
         {
           $graphLookup: {
-            from: "parentreferences", // Name of the collection
+            from: "parentreferences", 
             startWith: "$_id",
             connectFromField: "_id",
             connectToField: "parent",

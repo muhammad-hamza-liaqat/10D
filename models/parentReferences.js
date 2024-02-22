@@ -6,6 +6,8 @@ const categorySchema = new Schema({
   parent: { type: String, default: null }
 });
 
+console.log("parentReferenceModel sync")
+
 const parentReferenceModel = mongoose.model('parentReference', categorySchema);
 
 module.exports = parentReferenceModel;
