@@ -27,7 +27,7 @@ const uploadToAws = async (file, fileName) => {
     });
 
     const command = new PutObjectCommand({
-      Bucket: "YOUR_BUCKET_NAME",
+      Bucket: "btb-media-gallary",
       Key: fileName,
       Body: readableStream,
     });
@@ -41,4 +41,21 @@ const uploadToAws = async (file, fileName) => {
   }
 };
 
-module.exports = { addData, uploadToAws };
+
+const handleFileUpload = async (req, res) => {
+  try {
+      const files = req.files;
+      const uploadedFiles = [];
+      for (const file of files) {
+          const fileName = file.key;
+          const fileUrl = await uploadToAws(file, fileName);
+          uploadedFiles.push({ fileName, fileUrl });
+      }
+      res.json({ uploadedFiles });
+  } catch (error) {
+      console.error("Error uploading files:", error);
+      res.status(500).json({ error: "Failed to upload files" });
+  }
+};
+
+module.exports = { addData, uploadToAws, handleFileUpload };
